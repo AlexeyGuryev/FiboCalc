@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Core;
 
@@ -8,34 +9,34 @@ namespace ApiProcessor.Controllers
     {
         private readonly Calculator _calculator = new Calculator();
 
-        // GET api/fibo/4?prev=1&cur=2&fin=10
+        // GET api/fibo/queue?prev=1&cur=2
         /// <summary>
         /// Следующее число Фибоначчи
         /// </summary>
-        /// <param name="position"></param>
+        /// <param name="queue">Очередь (поток)</param>
         /// <param name="prev">Предыдущее значение</param>
         /// <param name="cur">Текущее значение</param>
-        /// <param name="fin">Индекс последнего рассчитываемого</param>
         /// <returns></returns>
-        public async Task Get(int position, int prev, int cur, int fin)
+        public async Task Get(string queue, int prev, int cur)
         {
-            var fiboNumber = _calculator.Calc(new FiboNumber(position, prev, cur));
-            Logger.Log.Info($"Just calculated for step: {fiboNumber.Position} value: {fiboNumber.Current}");
-
-            if (position < fin && fiboNumber.Current >= 0)
+            var newNumber = _calculator.Calc(prev, cur);
+            if (newNumber >= 0)
             {
-                await Send(fiboNumber);
+                Logger.Log.Info($"{queue} value: {newNumber}");
+                await SendToBus(new FiboNumber(queue, cur, newNumber));
             }
             else
             {
-                Logger.Log.Info("Calculation finished!");
+                Logger.Log.Info($"{queue} Calculation finished!");
+                await SendToBus(new FiboNumber(queue, cur, newNumber, true));
             }
         }
 
-        private async Task Send(FiboNumber fiboNumber)
+        private async Task SendToBus(FiboNumber fiboNumber)
         {
-            var endpoint = await WebApiApplication.BusControl.GetSendEndpoint(MqConfig.EndPointUri);
-            await endpoint.Send(fiboNumber.GetNextToCalc());
+            var endPointUri = new Uri($"{MqConfig.RabbitUrl}/{fiboNumber.Queue}");
+            var endpoint = await WebApiApplication.BusControl.GetSendEndpoint(endPointUri);
+            await endpoint.Send(fiboNumber);
         }
     }
 }

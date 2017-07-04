@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="Calculator.cs" />
     <Compile Include="FiboNumber.cs" />
-    <Compile Include="IFiboNumberContract.cs" />
     <Compile Include="MqConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

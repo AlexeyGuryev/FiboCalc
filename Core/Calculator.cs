@@ -2,9 +2,13 @@
 {
     public class Calculator
     {
-        public FiboNumber Calc(FiboNumber fiboNumber)
+        public int Calc(int prev, int cur)
         {
-            return new FiboNumber(fiboNumber.Position, fiboNumber.Current, fiboNumber.Current + fiboNumber.Previous);
+            if (cur < 1)
+            {
+                cur = 1;
+            }
+            return cur + prev;
         }
     }
 }

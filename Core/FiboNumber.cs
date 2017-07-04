@@ -1,21 +1,18 @@
 ﻿namespace Core
 {
-    public class FiboNumber : IFiboNumberContract
+    public class FiboNumber
     {
-        public int Position { get; set; }
+        public string Queue { get; set; }
         public int Previous { get; set; }
         public int Current { get; set; }
+        public bool Finished { get; set; }
 
-        public FiboNumber(int position, int previous, int current)
+        public FiboNumber(string queue, int previous, int current, bool finished = false)
         {
-            Position = position;
+            Queue = queue;
             Previous = previous;
             Current = current;
-        }
-
-        public FiboNumber GetNextToCalc()
-        {
-            return new FiboNumber(Position + 1, Previous, Current);
+            Finished = finished;
         }
     }
 }

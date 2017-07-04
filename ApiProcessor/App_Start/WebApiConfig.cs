@@ -16,7 +16,7 @@ namespace ApiProcessor
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{position}"
+                routeTemplate: "api/{controller}/{queue}"
             );
         }
     }
