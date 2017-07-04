@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiProcessor", "ApiProcessor\ApiProcessor.csproj", "{924B6E1F-1AA1-4A2C-9237-1B6F8A031F52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusProcessor", "BusProcessor\BusProcessor.csproj", "{E8669D83-AC70-4B0F-844F-9C636FD27342}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{681B6233-9F99-47DC-8C2A-B756D175F8EE}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{924B6E1F-1AA1-4A2C-9237-1B6F8A031F52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{924B6E1F-1AA1-4A2C-9237-1B6F8A031F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{924B6E1F-1AA1-4A2C-9237-1B6F8A031F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{924B6E1F-1AA1-4A2C-9237-1B6F8A031F52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8669D83-AC70-4B0F-844F-9C636FD27342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8669D83-AC70-4B0F-844F-9C636FD27342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8669D83-AC70-4B0F-844F-9C636FD27342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8669D83-AC70-4B0F-844F-9C636FD27342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{681B6233-9F99-47DC-8C2A-B756D175F8EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{681B6233-9F99-47DC-8C2A-B756D175F8EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{681B6233-9F99-47DC-8C2A-B756D175F8EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{681B6233-9F99-47DC-8C2A-B756D175F8EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
